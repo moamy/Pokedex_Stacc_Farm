@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* body */
+body{
+    height: 100vh;
+    background-color: rgb(243, 164, 47);
+}
+
+/* Center content using flexbox */
+body, #mainContent, form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Main container with content */
+#mainContent{
+    width: 30%;
+    height: 50%;
+    border-radius: 15px;
+    background-color: antiquewhite;
+}
+
+/* form */
+form{
+    gap: 1rem;
+}
+
+input{
+    padding: 0.5rem;
+    text-align: center;
+    border-radius: 3px;
+}
+
+/* image */
+img{
+    height: 200px;
+    width: 200px;
+}

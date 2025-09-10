@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="mainContent">
+        <img id="img">
+        <!-- Return false upon submitting form to prevent site from reloading -->
+        <form onsubmit="return false">
+            <input id="name" name="pokemonName" type="text" autocomplete="off">
+            <!-- Clicking submit kicks off the fetchAPI() function -->
+            <input type="submit" value="Submit" onclick="fetchAPI(pokemonName)">
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
