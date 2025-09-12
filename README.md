@@ -1,11 +1,15 @@
 # Pokedex for Stacc Farm!
 This is a Pokédex demo created for Stacc Farm! :) 
 
+I made the tests using Playwright, and everything through JavaScript, HTML and CSS. I also used a font from 
+
 ## Run the project
-The project (without tests) can be run by just downloading the project from GitHub and running the `index.html` file!
+The project (without tests) can be run by downloading the project from GitHub as a ZIP-file and extracting it. Open the extracted folder and then open its `index.html` file!
 
 ## Run the tests
-Running the tests requires a setup in Docker. I'm unsure if this is the best way to go about it, but I figured it should work relatively smoothly.
+Running the tests requires a setup in Docker. 
+
+I'm unsure if this is the best way to go about it, but I figured it should work relatively smoothly.
 
 To run the tests, you have to pull and run the image. Run the following commands in the Docker terminal:
 
