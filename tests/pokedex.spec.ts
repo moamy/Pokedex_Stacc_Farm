@@ -1,7 +1,10 @@
 import { test, expect, Page } from "@playwright/test";
 
+// The path to the website can be changed
+const websitePath = "http://127.0.0.1:5500/";
+
 test("signals failure on failed search", async ({ page }) => {
-  await page.goto("http://127.0.0.1:5500/");
+  await page.goto(websitePath);
   await page.locator("#name").click();
   // Fills the text input with something that won't result in a match
   await page.locator("#name").fill("null");
@@ -24,7 +27,7 @@ test("signals failure on failed search", async ({ page }) => {
 
 // Makes sure searching for a pokemon (clefairy) will result in displaying its sprite
 test("displays pokemon on successful search", async ({ page }) => {
-  await page.goto("http://127.0.0.1:5500/");
+  await page.goto(websitePath);
   await page.locator("#name").click();
   await page.locator("#name").fill("clefairy");
   await page.getByRole("button", { name: "Submit" }).click();
@@ -37,7 +40,7 @@ test("displays pokemon on successful search", async ({ page }) => {
 
 // Makes sure the API results in an OK response
 test("gets OK response from API", async ({ page }) => {
-  await page.goto("http://127.0.0.1:5500/");
+  await page.goto(websitePath);
   await page.locator("#name").click();
   await page.locator("#name").fill("pikachu");
 
@@ -47,7 +50,7 @@ test("gets OK response from API", async ({ page }) => {
   );
 
   await page.getByRole("button", { name: "Submit" }).click();
-  
+
   const response = await responsePromise;
   // If the response is 200 (OK) then the test will be passed
   await expect(response.status() === 200).toBeTruthy;
