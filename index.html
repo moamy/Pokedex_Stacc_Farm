@@ -14,7 +14,7 @@
             <img id="img" src="/blank.png" alt="Picture displaying a pokémon.">
         <!-- Return false upon submitting form to prevent site from reloading -->
         <form onsubmit="return false">
-            <input id="name" name="pokemonName" type="text" autocomplete="off">
+            <input id="name" name="pokemonName" type="text" autocomplete="off" required="required" placeholder="Search for a pokemon">
             <!-- Clicking submit kicks off the fetchAPI() function -->
             <input type="submit" value="Submit" onclick="checkCache(pokemonName)">
         </form>
