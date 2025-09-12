@@ -76,7 +76,7 @@ function displayResult(pokemon) {
         searchResult.textContent = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
         // Otherwise, communicate the failure through an animation and imagery. 
     } else {
-        img.src = "/cross.png";
+        img.src = "cross.png";
         textInput.style.animation = 'none';
         textInput.style.backgroundColor = "#ff9f94";
         textInput.animate(shake, 200);
