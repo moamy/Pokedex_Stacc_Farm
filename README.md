@@ -1,7 +1,7 @@
 # Pokedex for Stacc Farm!
 This is a Pokédex demo created for Stacc Farm! :) 
 
-I made the tests using Playwright, and everything through JavaScript, HTML and CSS. I also used a font from 
+I made the tests using Playwright, and everything else through pure JavaScript, HTML and CSS. I also used a font from Google Fonts, I hope that is okay with you guys since they are free to use. 
 
 ## Run the project
 The project (without tests) can be run by downloading the project from GitHub as a ZIP-file and extracting it. Open the extracted folder and then open its `index.html` file!
