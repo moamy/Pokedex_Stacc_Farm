@@ -1,13 +1,13 @@
 /* Imports the used font */
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Chivo:ital,wght@0,100..900;1,100..900&family=League+Spartan:wght@100..900&family=Shrikhand&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
 /* body */
-body{
+body {
     height: 100vh;
     background-color: rgb(243, 164, 47);
     font-family: "Chivo", sans-serif;
@@ -16,21 +16,23 @@ body{
 }
 
 /* headers */
-h1{
+h1 {
     font-size: 3em;
 }
 
-h2{
+h2 {
     font-size: 2em;
 }
 
-h4{
+h4 {
     color: gray;
     margin-bottom: 1rem;
 }
 
 /* Center content using flexbox */
-body, #mainContent, form{
+body,
+#mainContent,
+form {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,7 +41,7 @@ body, #mainContent, form{
 }
 
 /* Main container with content */
-#mainContent{
+#mainContent {
     width: 30%;
     min-height: 50%;
     border-radius: 15px;
@@ -48,12 +50,12 @@ body, #mainContent, form{
 }
 
 /* form */
-form{
+form {
     gap: 1rem;
     width: 100%;
 }
 
-input{
+input {
     padding: 0.5rem;
     text-align: center;
     border-radius: 3px;
@@ -62,7 +64,7 @@ input{
     max-width: 90%;
 }
 
-input[type="submit"]{
+input[type="submit"] {
     background-color: rgb(243, 14, 14);
     color: white;
     border-radius: 15px;
@@ -72,7 +74,7 @@ input[type="submit"]{
 }
 
 /* image */
-img{
+img {
     height: 200px;
     width: 200px;
 }
