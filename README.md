@@ -23,6 +23,8 @@ docker run -p 5500:5500 moamy/pokedex:latest
 
 > OBS! the tests may have to be run twice in order for the snapshot tests to work, I have not run into such issues in this image, but the possibility remains. 
 
+Exit the image manually via the Docker GUI. 
+
 ## Further notes
 If you want to inspect the code for tests then these can be found at `tests > pokedex.spec.ts`. 
 
