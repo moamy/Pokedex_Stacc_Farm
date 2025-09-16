@@ -9,28 +9,27 @@ const textInput = document.getElementById("name");
 const figcaption = document.getElementById("pokemonId");
 const searchResult = document.getElementById("searchResult");
 const img = document.getElementById("img");
-let previousResults = [];
 let matchFound;
 
 // Checks the cache before deciding if an API lookup is necessary
 function checkCache(pokemonName) {
-    console.log("storage: " + localStorage.getItem("cachedPokémon"));
     // Disables text input to communicate a loading process and prevent 
     // the user from changing their input in the meanwhile. 
     textInput.disabled = true;
-    let userInput = pokemonName.value
+    let userInput = pokemonName.value.toLowerCase();
     matchFound = false;
-    console.log(previousResults);
+
     // If the cache is not empty, check to see if the requested pokemon 
-    // happens to be saved in local storage.
-    if (!previousResults || previousResults.length != 0) {
-        previousResults.forEach(element => {
-            if (userInput == element.name) {
+    // happens to be saved in session storage.
+    let cachedPokemon = sessionStorage.getItem("cachedPokemon");
+    if (cachedPokemon) {
+        let parsedPokemon = JSON.parse(cachedPokemon);
+        parsedPokemon.forEach(element => {
+            if (userInput == element.name.toLowerCase()) {
                 // If the pokemon is found in the cache, 
                 // display results using cache. 
                 displayResult(element);
                 matchFound = true;
-                console.log("Match found!!");
             }
         });
     }
@@ -52,12 +51,13 @@ async function fetchAPI(userInput) {
             displayResult(null);
             throw new Error('Response status: ${response.status}');
         }
+
         let result = await response.json();
-        console.log(result);
-        // Sends the result to the displayResults() function upon receiving a 200 (ok)
-        displayResult(result);
         // Caches the result
         cacheResult(result);
+        // Sends the result to the displayResults() function upon receiving a 200 (ok)
+        displayResult(result);
+
         // Catches any errors for debugging purposes
     } catch (error) {
         console.error(error.message);
@@ -89,22 +89,32 @@ function displayResult(pokemon) {
 // Tries to cache results. Deletes the cache upon failed attempt.
 function cacheResult(result) {
     try {
-        previousResults.push(result);
-        localStorage.setItem("cachedPokémon", previousResults);
+        // Get previously cached pokemon (if any)
+        let cachedPokemon = sessionStorage.getItem("cachedPokemon");
+        let parsedCache;
+
+        // If there are any cached pokemon, parse the data. 
+        if (cachedPokemon) {
+            parsedCache = JSON.parse(cachedPokemon);
+        } else {
+            parsedCache = [];
+        }
+
+        // loop through the cached pokemon to see if any match the current one (parameter)
+        let alreadyExists = false;
+        parsedCache.forEach(pokemon => {
+            if (pokemon.name.toLowerCase() === result.name.toLowerCase()) {
+                alreadyExists = true;
+            }
+        });
+
+        // If it doesn't exist in cache, then make sure to store it
+        if (!alreadyExists) {
+            parsedCache.push(result);
+            sessionStorage.setItem("cachedPokemon", JSON.stringify(parsedCache));
+        }
+        // Empty cache if it fails to execute function
     } catch (e) {
-        removeCache();
+        sessionStorage.removeItem("cachedPokemon");
     }
 }
-
-// Removes cache
-function removeCache() {
-    previousResults = [];
-    localStorage.clear();
-}
-
-// Calls the removal of cache before closing or reloading the website.
-window.onbeforeunload = function () {
-    removeCache();
-    return null;
-}
-
