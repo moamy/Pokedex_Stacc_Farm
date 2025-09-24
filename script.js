@@ -1,15 +1,15 @@
-// An animatiion for signaling failure
-const shake = [
-    { transform: "translateX(0%)" },
-    { transform: "translateX(10%)" },
-    { transform: "translateX(-10%)" }
-];
 // Declare (and define) global variables
 const textInput = document.getElementById("name");
 const figcaption = document.getElementById("pokemonId");
 const searchResult = document.getElementById("searchResult");
 const img = document.getElementById("img");
 let matchFound;
+// An animatiion for signaling failure
+const shake = [
+    { transform: "translateX(0%)" },
+    { transform: "translateX(10%)" },
+    { transform: "translateX(-10%)" }
+];
 
 // Checks the cache before deciding if an API lookup is necessary
 function checkCache(pokemonName) {
@@ -33,7 +33,7 @@ function checkCache(pokemonName) {
             }
         });
     }
-    // If no match was found, 
+    // If no match was found, fetch API
     if (!matchFound) {
         fetchAPI(userInput);
     }
@@ -74,7 +74,7 @@ function displayResult(pokemon) {
         textInput.style.backgroundColor = "#fff";
         figcaption.textContent = "#" + pokemon.id;
         searchResult.textContent = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
-        // Otherwise, communicate the failure through an animation and imagery. 
+    // Otherwise, communicate the failure through an animation and imagery. 
     } else {
         img.src = "cross.png";
         textInput.style.animation = 'none';
@@ -113,7 +113,7 @@ function cacheResult(result) {
             parsedCache.push(result);
             sessionStorage.setItem("cachedPokemon", JSON.stringify(parsedCache));
         }
-        // Empty cache if it fails to execute function
+    // Empty cache if it fails to successfully execute try block
     } catch (e) {
         sessionStorage.removeItem("cachedPokemon");
     }

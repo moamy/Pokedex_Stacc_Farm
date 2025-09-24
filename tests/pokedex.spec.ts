@@ -32,7 +32,7 @@ test("displays pokemon on successful search", async ({ page }) => {
   await page.locator("#name").fill("clefairy");
   await page.getByRole("button", { name: "Submit" }).click();
   // Does not check the whole process of getting a response from the API,
-  // only checks the src of the image to include a part of the APIs image folder path.
+  // Only checks the src of the image to include a part of the APIs image folder path.
   await expect(
     page.getByRole("img", { name: "Picture displaying a pokémon." })
   ).toHaveAttribute("src", /\PokeAPI\/sprites/);
@@ -53,5 +53,5 @@ test("gets OK response from API", async ({ page }) => {
 
   const response = await responsePromise;
   // If the response is 200 (OK) then the test will be passed
-  await expect(response.status() === 200).toBeTruthy;
+  await expect(response.status() === 200).toBeTruthy();
 });
